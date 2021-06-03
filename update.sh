@@ -11,11 +11,9 @@
 ## pushed updated docker image to remote docker registry.
 #docker-compose pull
 
-docker-compose down
-docker-compose pull
-
-## Builds, (re)creates, starts, and attaches to containers
-docker-compose up
+sudo docker-compose down
+sudo docker-compose pull
+sudo docker-compose up
 
 ## start mysql
 #sudo -S launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
