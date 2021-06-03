@@ -12,6 +12,7 @@
 #docker-compose pull
 
 docker-compose down
+docker-compose pull
 
 ## Builds, (re)creates, starts, and attaches to containers
 docker-compose up
