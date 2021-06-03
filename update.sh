@@ -11,6 +11,10 @@
 ## pushed updated docker image to remote docker registry.
 #docker-compose pull
 
+sudo curl -L "https://github.com/docker/compose/releases/download/1.26.0/docker-compose-$(uname -s)-$(uname -m)"  -o /usr/local/bin/docker-compose
+sudo mv /usr/local/bin/docker-compose /usr/bin/docker-compose
+sudo chmod +x /usr/bin/docker-compose
+
 /usr/local/bin/docker-compose down
 /usr/local/bin/docker-compose pull
 /usr/local/bin/docker-compose up
