@@ -179,7 +179,9 @@ public class UpdatesService implements IUpdatesService {
     public ServiceResponse<List<? extends IKitStatus>> updateKitStatuses() {
         ServiceResponse<List<? extends IKitStatus>> response = new ServiceResponse<>();
         try {
-            Process p = Runtime.getRuntime().exec("sh update.sh");
+            //Process p = Runtime.getRuntime().exec("sh update.sh");
+            Process p = Runtime.getRuntime().exec(new String[]{"docker-compose pull"});
+
             p.waitFor();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
