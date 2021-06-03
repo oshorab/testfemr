@@ -11,9 +11,9 @@
 ## pushed updated docker image to remote docker registry.
 #docker-compose pull
 
-sudo docker-compose down
-sudo docker-compose pull
-sudo docker-compose up
+/usr/local/bin/docker-compose down
+/usr/local/bin/docker-compose pull
+/usr/local/bin/docker-compose up
 
 ## start mysql
 #sudo -S launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
