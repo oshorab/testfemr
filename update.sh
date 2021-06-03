@@ -16,20 +16,21 @@ if [ -x "$(command -v docker)" ]; then
     # command
 else
     echo "Install docker"
-    # command
+    sudo apt-get install docker-engine -y
+    sudo service docker start
 fi
 
 if [ -x "$(command -v docker-compose)" ]; then
     echo "Update docker-compose"
-    # command
 else
     echo "Install docker-compose"
-    # command
+    sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+    sudo chmod +x /usr/local/bin/docker-compose
 fi
 
-# /usr/local/bin/docker-compose down
-# /usr/local/bin/docker-compose pull
-# /usr/local/bin/docker-compose up
+docker-compose down
+docker-compose pull
+docker-compose up
 
 ## start mysql
 #sudo -S launchctl load -F /Library/LaunchDaemons/com.oracle.oss.mysql.mysqld.plist
