@@ -179,22 +179,34 @@ public class UpdatesService implements IUpdatesService {
     public ServiceResponse<List<? extends IKitStatus>> updateKitStatuses() {
         ServiceResponse<List<? extends IKitStatus>> response = new ServiceResponse<>();
         try {
-            Process p = Runtime.getRuntime().exec("sh update.sh");
-   
-            p.waitFor();
-
-            BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
-            BufferedReader errorReader = new BufferedReader(new InputStreamReader(p.getErrorStream()));
-
+            String cmd = "docker-compose up";
+            Runtime run = Runtime.getRuntime();
+            Process pr = run.exec(cmd);
+            pr.waitFor();
+            BufferedReader buf = new BufferedReader(new InputStreamReader(pr.getInputStream()));
             String line = "";
-            while ((line = reader.readLine()) != null) {
-                System.out.println(line);
+            while ((line=buf.readLine())!=null) {
+               System.out.println(line);
             }
 
-            line = "";
-            while ((line = errorReader.readLine()) != null) {
-                System.out.println(line);
-            }
+             
+            // Existing code from here
+//             Process p = Runtime.getRuntime().exec("sh update.sh");
+   
+//             p.waitFor();
+
+//             BufferedReader reader = new BufferedReader(new InputStreamReader(p.getInputStream()));
+//             BufferedReader errorReader = new BufferedReader(new InputStreamReader(p.getErrorStream()));
+
+//             String line = "";
+//             while ((line = reader.readLine()) != null) {
+//                 System.out.println(line);
+//             }
+
+//             line = "";
+//             while ((line = errorReader.readLine()) != null) {
+//                 System.out.println(line);
+//             }
 
             String updatedDate = java.time.LocalDate.now().toString().replace("-", ".");
             IKitStatus kitStatusDate = retrieveKitStatuses().getResponseObject().get(2);
